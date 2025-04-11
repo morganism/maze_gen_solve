@@ -1,0 +1,18 @@
+version: '3.8' # Specify docker-compose version
+
+services:
+  maze_app:
+    # Build the image using the Dockerfile in the current directory (.)
+    build: .
+    container_name: ruby_maze_app_interactive
+
+    # Keep stdin open for interactive input (like gets)
+    stdin_open: true
+    # Allocate a pseudo-TTY for interactive terminal session
+    tty: true
+
+    # Mount the current host directory (.) into /app inside the container
+    # This allows the script inside the container to read/write files
+    # directly in your project directory on the host machine.
+    volumes:
+      - .:/app
